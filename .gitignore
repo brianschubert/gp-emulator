@@ -1,0 +1,9 @@
+# IDEs
+/.idea/
+
+# Build and tooling artifacts
+__pycache__/
+
+ # Misc
+ /.local/
+/scratches/
