@@ -9,9 +9,15 @@ packages = [
 ]
 
 [tool.poetry.dependencies]
-python = "^3.9"
+python = "^3.9,<3.12"
 gpflow = "^2.9.0"
+scikit-learn = "^1.3.2"
+xarray = "^2023.10.1"
+nptyping = "^2.5.0"
 
+[tool.poetry.group.dev.dependencies]
+black = "^23.10.1"
+isort = "^5.12.0"
 
 [tool.poetry.group.nb.dependencies]
 jupyter = "^1.0.0"
@@ -21,3 +27,18 @@ nbqa = "^1.7.0"
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
 
+# Black config.
+[tool.black]
+# How many characters per line to allow.
+# https://black.readthedocs.io/en/stable/the_black_code_style/current_style.html#line-length
+line-length = 88
+# Don't skip skip temporary sanity checks.
+safe = true
+# Python versions that should be supported by Black's output.
+target-version = ["py39"]
+# Set to true to preview style changes that may be added in black's next major release.
+preview = false
+
+# isort config.
+[tool.isort]
+profile = "black"
