@@ -5,6 +5,6 @@
 __pycache__/
 
  # Misc
- /.local/
+/.local/
 /scratches/
 /resources/local_data/
