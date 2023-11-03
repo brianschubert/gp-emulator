@@ -10,7 +10,12 @@ packages = [
 
 [tool.poetry.dependencies]
 python = "^3.9"
+gpflow = "^2.9.0"
 
+
+[tool.poetry.group.nb.dependencies]
+jupyter = "^1.0.0"
+nbqa = "^1.7.0"
 
 [build-system]
 requires = ["poetry-core"]
