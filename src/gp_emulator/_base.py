@@ -51,7 +51,7 @@ class BaseGPEmulator(abc.ABC):
     def __init__(
         self,
         train_features: ExampleFeatureArray,
-        train_targets: train_targets,
+        train_targets: ExampleFeatureArray,
         dim_names: Iterable[_DimName],
     ) -> None:
         self.train_features = train_features
@@ -73,10 +73,6 @@ class BaseGPEmulator(abc.ABC):
 
         if y_shape[1] != 1:
             raise ValueError("targets must have a single column")
-
-    @classmethod
-    def extract_dataarray(cls):
-        pass
 
     @classmethod
     @abc.abstractmethod
@@ -163,7 +159,7 @@ class MultiGPEmulator(Generic[_G]):
     @abc.abstractmethod
     def predict_components(
         self, x: ExampleFeatureArray, which: Iterable[int] | None = None
-    ) -> Iterator[MeanStd]:
+    ) -> Iterator[MeanStd[ExampleFeatureArray]]:
         if which is not None:
             desired_components = [self.components[idx] for idx in which]
         else:

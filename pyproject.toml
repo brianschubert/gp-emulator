@@ -53,3 +53,7 @@ testpaths = ["tests"]
 [tool.mypy]
 strict = true
 pretty = true
+
+[[tool.mypy.overrides]]
+module = ["sklearn.*"]
+ignore_missing_imports = true
