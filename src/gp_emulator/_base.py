@@ -3,17 +3,18 @@ from __future__ import annotations
 import abc
 import io
 from collections.abc import Iterator, Mapping, Sequence
-from typing import Any, Callable, Generic, Iterable, Literal, NamedTuple, TypeVar
+from typing import Any, Callable, Generic, Iterable, Literal, TypeVar
 
 import numpy as np
 import xarray
 from nptyping import Floating, NDArray
 import xarray as xr
-from typing_extensions import Self, TypeAlias
+from typing_extensions import Self, TypeAlias, NamedTuple
+
 
 ExampleFeatureArray: TypeAlias = NDArray[Literal["* example, * feature"], Floating]
 """
-2D array with examples along the first dimension and features along the second dimension. 
+2D array with examples along the first dimension and features  along the second dimension. 
 """
 
 _DimName: TypeAlias = str
@@ -23,6 +24,7 @@ _T = TypeVar("_T")
 _G = TypeVar("_G", bound="BaseGPEmulator")
 
 
+# Need to use typing_extension's NamedTuple for compatibility with Generic in Python < 3.11
 class MeanStd(NamedTuple, Generic[_T]):
     """Tuple containing a mean and standard deviation."""
 
